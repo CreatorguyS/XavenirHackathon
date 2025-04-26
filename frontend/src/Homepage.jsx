@@ -1,20 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
     <div className="bg-gradient-to-b from-white to-[#FFF9DB] min-h-screen flex flex-col">
       {/* Navbar */}
-      <header className="bg-[#0D1B2A] text-white flex justify-between items-center px-8 py-4 shadow-lg">
-        <div className="text-2xl font-bold">SurplusShare</div>
-        <nav className="flex gap-6">
-          <a href="home" className="hover:underline">Home</a>
-          <a href="about" className="hover:underline">About</a>
-          <a href="how-it-works" className="hover:underline">How It Works</a>
-          <a href="browse" className="hover:underline">Browse</a>
-          <a href="contact" className="hover:underline">Contact</a>
-          <a href="register" className="bg-white text-[#0D1B2A] font-semibold px-4 py-2 rounded-md hover:bg-gray-100 transition">Register</a>
-        </nav>
-      </header>
+      <nav className="bg-black text-white py-4 px-8 shadow-lg">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-2xl font-bold">SurplusShare</div>
+          <div className="flex items-center space-x-6">
+            <Link to="/" className="hover:text-gray-300 transition">Home</Link>
+            <Link to="/about" className="hover:text-gray-300 transition">About Us</Link>
+            <Link to="/contact" className="hover:text-gray-300 transition">Contact</Link>
+            <Link to="/distributor/register" className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition">
+              Register
+            </Link>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <section
@@ -46,7 +49,6 @@ const HomePage = () => {
       <section id="who-can-join" className="py-16 px-6 text-center bg-[#0D1B2A] text-white">
         <h2 className="text-3xl font-semibold mb-10">Who Can Join?</h2>
         <div className="flex flex-col md:flex-row justify-center gap-8">
-
           {/* User Card */}
           <div className="relative w-full md:w-1/3 p-8 rounded-lg bg-white/10 backdrop-blur-md shadow-lg transform hover:scale-105 transition border-2 border-white">
             <h3 className="text-2xl font-semibold mb-4">User (Receiver)</h3>
@@ -62,7 +64,6 @@ const HomePage = () => {
             {/* Mirror reflection */}
             <div className="absolute bottom-[-50%] left-0 w-full h-full opacity-10 transform scale-y-[-1] bg-white/10 blur-md"></div>
           </div>
-
         </div>
       </section>
 
@@ -98,7 +99,6 @@ const HomePage = () => {
         </div>
         <p>© 2025 SurplusShare. All rights reserved.</p>
       </footer>
-
     </div>
   );
 };
