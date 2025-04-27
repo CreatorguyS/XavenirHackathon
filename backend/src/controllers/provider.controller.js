@@ -203,6 +203,13 @@ const getHistory = asyncHandler(async (req, res) => {
        .json(new MyResponse(200, "Supply history fetched successfully", supplies));
 })
 
+const getCurrentProvider = asyncHandler(async (req, res) => {
+    const provider = await Provider.findById(req.user);
+    if (!provider) throw new MyError(404, "Provider not found");
+    provider.password = undefined;
+    return res.status(200).json(new MyResponse(200, "Provider fetched successfully", { provider }));
+});
+
 export {
     registerProvider,
     loginProvider,
@@ -211,5 +218,4 @@ export {
     showRecepients,
     chooseDistributor,
     giveRating,
-    getHistory,
 };
