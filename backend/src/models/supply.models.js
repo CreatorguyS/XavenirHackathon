@@ -42,6 +42,21 @@ const supplySchema = new Schema(
         distributorSupplyPhotos: [{ type: String }],
         providerRating: {type: Number, default: null },
         distributorRatings: {type: Number, default: null},
+        status: { 
+            type: String,
+            required: true,
+            enum: [
+              "pending",        
+              "reserved",           
+              "delivered",     
+              "cancelled",     
+              "expired"        
+            ],
+            default: "pending" 
+          },
+        pickupTime: { type: Date },
+        deliveredTime: { type: Date },
+        
     },
     { timestamps: true },
 );

@@ -140,6 +140,7 @@ const chooseDistributor = asyncHandler(async (req, res) => {
     supply.receiver = distributorId;
     supply.recepients = [];
     supply.distributorLocation = distributorLocation;
+    supply.status = "reserved";
     await supply.save();
 
     return res
@@ -191,6 +192,17 @@ const giveRating = asyncHandler(async (req, res) => {
        .json(new MyResponse(200, "Rating given successfully"));
 });
 
+const getHistory = asyncHandler(async (req, res) => {
+    const providerId = req.user;
+    const supplies = await Supply.find({ receiver: providerId });
+
+    if (!supplies.length) throw new MyError(404, "No supplies found for this distributor");
+
+    return res
+       .status(200)
+       .json(new MyResponse(200, "Supply history fetched successfully", supplies));
+})
+
 export {
     registerProvider,
     loginProvider,
@@ -199,4 +211,5 @@ export {
     showRecepients,
     chooseDistributor,
     giveRating,
+    getHistory,
 };

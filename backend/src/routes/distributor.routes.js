@@ -1,6 +1,7 @@
 import express from "express";
 import isAuthenticated from "../middlewares/auth.middleware.js";
 import {
+    getHistory,
     getSuppliesNearMe,
     loginDistributor,
     logoutDistributor,
@@ -17,6 +18,7 @@ app.get("/logout", logoutDistributor);
 app.use(isAuthenticated);
 app.post("/get-supplies", getSuppliesNearMe);
 app.post("/select-supply", selectSupply);
-// app.post("/supplied", upload.single("foodPhoto"), supplyFood);
+app.post("/supplied", upload.single("foodPhoto"), supplyFood);
+app.get("/history", getHistory);
 
 export default app;
