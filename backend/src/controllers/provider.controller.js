@@ -218,4 +218,6 @@ export {
     showRecepients,
     chooseDistributor,
     giveRating,
+    getHistory,
+    getCurrentProvider,
 };

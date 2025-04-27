@@ -9,7 +9,6 @@ import uploadFileOnCloudinary from "../utils/Cloudinary.js";
 import MyError from "../utils/MyError.js";
 import MyResponse from "../utils/MyResponse.js";
 import { Provider } from "../models/provider.models.js";
-import { Supply } from "../models/supply.models.js";
 
 const registerDistributor = asyncHandler(async (req, res) => {
     const { name, email, password, uniqueIdentifier } = req.body;
